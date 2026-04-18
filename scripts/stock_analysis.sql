@@ -51,7 +51,7 @@ AvgGL AS (
     FROM GainsLosses
 )
 SELECT symbol, date, close,
-       ROUND(CAST(100 - (100 / (100 + (avg_gain / NULLIF(avg_loss, 0)))) AS NUMERIC), 2) as rsi
+       ROUND(CAST(100 - (100 / (1 + (avg_gain / NULLIF(avg_loss, 0)))) AS NUMERIC), 2) as rsi
 FROM AvgGL;
 
 
